@@ -11,13 +11,13 @@ class Globo
 
   void update()
   {
-    y+=vy;
-    x+=vx;
+    y+=vy-5;
+    x+=vx+10;
   }
 
   void dibujate()
   {
-      ellipse(x,y,100,100);
+      ellipse(x,y,85,100);
   }
   
 }
