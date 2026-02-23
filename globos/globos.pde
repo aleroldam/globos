@@ -42,7 +42,7 @@ void setup()
 
 void draw()
 {
-  background(20, 20, 40); // Un fondo más oscuro para que resalten las luces
+  background(0, 0, 0); // Un fondo más oscuro para que resalten las luces
   
   // Luces: sin esto, el 3D no se aprecia
   lights(); 
