@@ -1,12 +1,18 @@
 class Globo
 {
-  float x, y,vx,vy;
+  float x, y, vx, vy;
+  float r, g, b; // Añadimos color para que se vean mejor
+
   Globo (float _x, float _y)
   {
-   x=_x;
-   y=_y; 
-   vx=random(-0.25,0.25);
-   vy=random(-2,-0.5);
+    x = _x;
+    y = _y; 
+    vx = random(-0.25, 0.25);
+    vy = random(-2, -0.5);
+    // Colores aleatorios para darle variedad
+    r = random(100, 255);
+    g = random(100, 255);
+    b = random(100, 255);
   }
 
   void update()
@@ -17,24 +23,32 @@ class Globo
 
   void dibujate()
   {
-      ellipse(x,y,85,100);
+    pushMatrix();      // Guarda el estado de la matriz
+    translate(x, y, 0); // Mueve el "centro" del dibujo a la posición del globo
+    fill(r, g, b);
+    noStroke();
+    sphere(40);        // Dibuja una esfera de radio 40
+    popMatrix();       // Restaura la matriz para el siguiente globo
   }
-  
 }
 
 ArrayList<Globo> globos;
 
-
 void setup()
 {
-  size(640,480, P3D);
+  size(640, 480, P3D);
   globos = new ArrayList<Globo>();  
 }
 
 void draw()
 {
-  background(0,0,255);
-  for(int i=0;i<globos.size();i++)
+  background(20, 20, 40); // Un fondo más oscuro para que resalten las luces
+  
+  // Luces: sin esto, el 3D no se aprecia
+  lights(); 
+  directionalLight(255, 255, 255, 0, 1, -1); 
+
+  for(int i = 0; i < globos.size(); i++)
   {
     globos.get(i).update();
     globos.get(i).dibujate();
@@ -43,5 +57,5 @@ void draw()
 
 void mousePressed()
 {
-  globos.add(new Globo(mouseX,mouseY));
+  globos.add(new Globo(mouseX, mouseY));
 }
