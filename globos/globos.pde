@@ -27,7 +27,7 @@ class Globo
     translate(x, y, 0); // Mueve el "centro" del dibujo a la posición del globo
     fill(r, g, b);
     noStroke();
-    sphere(40);        // Dibuja una esfera de radio 40
+    sphere(20);        // Dibuja una esfera de radio 40
     popMatrix();       // Restaura la matriz para el siguiente globo
   }
 }
@@ -42,7 +42,7 @@ void setup()
 
 void draw()
 {
-  background(0, 0, 0); // Un fondo más oscuro para que resalten las luces
+  background(30, 30, 30); // Un fondo más oscuro para que resalten las luces
   
   // Luces: sin esto, el 3D no se aprecia
   lights(); 
